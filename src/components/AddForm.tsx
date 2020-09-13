@@ -18,7 +18,7 @@ const AddForm: React.FC<Props> = ({ addTodo }) => {
     reset();
   };
   return (
-    <div>
+    <div className="Form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="todo">
           <input
