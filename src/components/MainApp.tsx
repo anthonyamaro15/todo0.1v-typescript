@@ -13,10 +13,32 @@ const MainApp = () => {
     setData([...data, todo]);
   };
 
+  const deleteTodo = (todo: Todos) => {
+    let filtered = data.filter((t) => t.todo !== todo.todo);
+    setData(filtered);
+  };
+
+  const toggleTodos = (todo: Todos) => {
+    let isCompleted = data.map((t) => {
+      if (todo.todo === t.todo) {
+        return {
+          ...t,
+          complete: !t.complete,
+        };
+      }
+      return t;
+    });
+    setData(isCompleted);
+  };
+
   return (
-    <div>
+    <div className="MainApp">
       <AddForm addTodo={addTodo} />
-      <DisplayTodos data={data} />
+      <DisplayTodos
+        data={data}
+        deleteTodo={deleteTodo}
+        toggleTodos={toggleTodos}
+      />
     </div>
   );
 };
